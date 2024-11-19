@@ -16,6 +16,38 @@ function TravelList() {
     margin: 20,
   };
 
+  const greatDealStyle = {
+    backgroundColor: "#7ee787",
+    width: "100px",
+    padding: "5px 10px",
+    borderRadius: "8px",
+    textAlign: "center",
+    display: "inline-block",
+    marginRight: 10,
+  };
+
+  const premiumStyle = {
+    backgroundColor: "#1f6feb",
+    width: "100px",
+    padding: "5px 10px",
+    borderRadius: "8px",
+    textAlign: "center",
+    display: "inline-block",
+    color: "white",
+    marginRight: 10,
+  };
+
+  const allInclusiveStyle = {
+    backgroundColor: "#1f6feb",
+    width: "100px",
+    padding: "5px 10px",
+    borderRadius: "8px",
+    textAlign: "center",
+    display: "inline-block",
+    color: "white",
+    marginRight: 10,
+  };
+
   return (
     <div>
       {travelData.map((data) => {
@@ -34,6 +66,22 @@ function TravelList() {
               <p>
                 <strong>Price:</strong> {data.totalCost} €
               </p>
+              {data.totalCost <= 350 && (
+                <span style={greatDealStyle}>
+                  <strong>Great deal</strong>
+                </span>
+              )}
+              {data.totalCost >= 1500 && (
+                <span style={premiumStyle}>
+                  <strong>Premium</strong>
+                </span>
+              )}
+
+              {data.allInclusive === true && (
+                <span style={allInclusiveStyle}>
+                  <strong>All-Inclusive</strong>
+                </span>
+              )}
             </div>
           </div>
         );
