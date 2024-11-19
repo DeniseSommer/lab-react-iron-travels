@@ -3,6 +3,13 @@ import { useState } from "react";
 
 function TravelList() {
   const [travelData, setTravelData] = useState(travelPlansData);
+  const deleteItem = (itemId) => {
+    const filteredItems = travelData.filter((data) => {
+      return data.id !== itemId;
+    });
+
+    setTravelData(filteredItems);
+  };
 
   const cardStyle = {
     width: 800,
@@ -48,6 +55,11 @@ function TravelList() {
     marginRight: 10,
   };
 
+  const buttonStyle = {
+    backgroundColor: "#9198a1",
+    color: "black",
+  };
+
   return (
     <div>
       {travelData.map((data) => {
@@ -82,6 +94,11 @@ function TravelList() {
                   <strong>All-Inclusive</strong>
                 </span>
               )}
+            </div>
+            <div>
+              <button onClick={() => deleteItem(data.id)} style={buttonStyle}>
+                Delete
+              </button>
             </div>
           </div>
         );
